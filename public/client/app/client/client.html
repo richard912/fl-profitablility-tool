@@ -1,0 +1,158 @@
+<div ng-controller="ClientCtrl">
+    <div id="wrapper">
+        <!--Header-->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header class="clearfix">
+                        <div class="logo pull-left"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                        <div class="menu pull-right">
+                            <ul>
+                                <li class="active"><a href="#">Insight <i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#/team" >Team</a></li>
+                                <li><a href="#/settings" >Settings</a></li>
+                                <li><a href="" ng-click="sign_out()">Signout</a></li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div class="header-bottom clearfix">
+                        <div class="navigation-menu">
+                            <ul>
+                                <li><a href="#/dashboard"><img src="images/left-arrow.png" alt=""></a></li>
+                                <li>Dashboard</li>
+                            </ul>
+                        </div>
+                        <a href="" data-toggle="modal" data-target="#modal-add-project" class="pull-right btn">Add Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="content">
+            <div class="container">
+                <div class="client-top-box clearfix">
+                    <div class="two-column list">
+                        <h2>Client PROFITABILITY</h2>
+                        <dl>
+                            <dt>GROSS REVENUE</dt>
+                            <dd><small>$</small> {{gross_info.revenue}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Gross Expenses</dt>
+                            <dd><small>$</small> {{gross_info.expense}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Profit</dt>
+                            <dd><small>$</small> {{gross_info.profit}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Profit Margin</dt>
+                            <dd><small>%</small> {{gross_info.margin}}</dd>
+                        </dl> 
+                    </div>
+                    <div class="two-column grid">
+                        <h2>Client Information <a href="#" class="btn-edit">Edit</a></h2>
+                        <dl>
+                            <dt>Industry</dt>
+                            <dd>{{industry}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Location</dt>
+                            <dd>{{location}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Revenue</dt>
+                            <dd>< $50,000</dd>
+                        </dl> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="table-container">
+                    <div class="table-head clearfix">
+                        <div class="col-5">Client</div>
+                        <div class="col-5">Gross Renevue</div>
+                        <div class="col-5">Gross Expenses</div>
+                        <div class="col-5">Profit</div>
+                        <div class="col-5">Margin: <a href="#">High to low</a></div>
+                    </div>
+                    <div class="add-btn" ng-if="projects.length == 0"><a href="" data-toggle="modal" data-target="#modal-add-project"><span>Add your first Project</span></a></div>
+                    <div class="table-row clearfix project-row" ng-repeat="project in projects">
+                        <div class="col-5" ng-click="goto_project(project.id)">{{project.name}}<span>{{project.project_type}}</span></div>
+                        <div class="col-5" ng-click="goto_project(project.id)">${{show_display_gross_revenue($index)}}</div>
+                        <div class="col-5" ng-click="goto_project(project.id)">${{show_display_gross_expense($index)}}</div>
+                        <div class="col-5" ng-click="goto_project(project.id)">${{show_display_gross_profit($index)}}</div>
+                        <div class="col-5" ng-click="goto_project(project.id)">{{show_display_gross_margin($index)}}%</div>
+                        <a href="" class="delete-row" ng-click="remove_project($index)"><span aria-hidden="true">&times;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container clearfix">
+            <a href="#" class="pull-left">Tell us what you think</a>
+            <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-add-project" tabindex="-1" role="dialog" aria-labelledby="modal-add-projectLabel" data-backdrop="static">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Add Project</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form ng-submit="add_project()">
+                                <div class="group">
+                                    <input type="text" required ng-model="project_name">
+                                    <label>Project Name*</label>
+                                </div>
+                                <div class="group">
+                                    <select required ng-model="project_type">
+                                        <option value="">Project Type *</option>
+                                        <option ng-repeat="val in project_types" value="{{val.name}}">
+                                            {{val.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="group-btn">
+                                    <input type="submit" class="btn" value="Add Project">
+                                    <input type="reset" class="btn-cancel" value="Cancel">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-client-wizard" tabindex="-1" role="dialog" aria-labelledby="modal-client-wizardLabel" ng-if="projects.length == 0">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Whats Now?</h4>
+                        </div>
+                        <div class="modal-body"> Add a project for this client. <img src="images/client-wizard-modal.jpg" alt=""> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/custom.js"></script>
+
+
+

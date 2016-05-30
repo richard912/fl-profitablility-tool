@@ -1,0 +1,66 @@
+<div id="wrapper" ng-controller="SignupCtrl"> 
+    <!--Header-->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header class="clearfix">
+                        <div class="logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+    	<div class="signup-container">
+        	<h2>Signup</h2>
+            <ul class="steps">
+            	<li class="active complete"><div>1</div><span>You</span></li>
+                <li class="active"><div>2</div><span>Organisation</span></li>
+                <li><div>3</div><span>Done!</span></li>
+            </ul>
+
+            <div ng-show="errors.length > 0" class="error-container">
+                <p ng-repeat="error in errors">
+                    {{ error }}
+                </p>
+            </div>
+                
+            <form ng-submit="update_organisation()">
+                <div class="group">
+                    <input name="organisation-name" type="text" required ng-model="organisation_name">
+                    <label>Organisation Name *</label>
+                </div>
+                <div class="group">
+                    <p>
+                    <strong>What kind of projects do you work on? *</strong> 
+                    We'll use this info to create a better experience for you.
+                    </p>
+                </div>
+                <div class="group">
+                	<h3>Project Types</h3>
+                    <input type="text" name="project-types" placeholder="+ Enter a tag, separate by commas" required ng-model="project_type_str" ng-change="project_type_change()">
+                    <!-- <a href="#" class="tags">Web Apps</a>
+                    <a href="#" class="tags">Interface</a>
+                    <a href="#" class="tags">Mobile UI</a> -->
+
+                    <a href="" class="tags" ng-repeat="project_type in project_types" ng-click="remove_project_type($index)">
+                        {{project_type}}
+                    </a>
+                    <a href="" class="cleartags" ng-click="project_type_str = ''; project_types = [];">Clear Tags</a>
+                </div>
+                <div class="group-btn" style="text-align:left;">
+                    <input type="submit" class="btn" value="Next">
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<footer>
+    <div class="container clearfix"> <a href="#" class="pull-left">Tell us what you think</a>
+        <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+    </div>
+</footer>
+
+<script src="js/custom.js"></script>

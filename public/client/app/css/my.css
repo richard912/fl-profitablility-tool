@@ -1,0 +1,21 @@
+.client-row:hover {
+    cursor: pointer;
+}
+
+.project-row:hover {
+    cursor: pointer;
+}
+.resource-timeline-text {
+  text-align: center;
+}
+.delete-row.delete-timeline-column {
+  margin: 0;
+  top: -17px;
+  left: 63px;
+}
+.bullets a.disabled {
+  color: #ccc;
+}
+.bullets a.disabled:hover {
+  cursor: default;
+}

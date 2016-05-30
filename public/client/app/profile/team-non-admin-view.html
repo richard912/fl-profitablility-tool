@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1040">
+<meta name="MobileOptimized" content="width=1040">
+<title>Team None Admin View</title>
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="fonts/fonts.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="short-header">
+<div id="wrapper"> 
+    <!--Header-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <header class="clearfix">
+                    <div class="logo pull-left"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                    <div class="menu pull-right">
+                        <ul>
+                            <li><a href="#">Insight <i class="fa fa-angle-down"></i></a></li>
+                            <li class="active"><a href="team-view.html">Team</a></li>
+                            <li><a href="settings.html">Settings</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div class="header-bottom clearfix">
+                    <div class="navigation-menu">
+                        <ul>
+                            <li>&nbsp;</li>
+                            <li>Your Team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        
+        <div class="team-container">
+        	<h3>Admins</h3>
+            <div class="admin-head">
+            	<div class="col-2">Eric Sullivan</div>
+                <div class="col-2"><a href="#"><i class="fa fa-star"></i>Admin</a></div>
+            </div>
+            <h3>Members</h3>
+            <div class="admin-row">
+            	<div class="col-2">Mike Cappucci</div>
+                <div class="col-2"></div>
+            </div>
+            <div class="admin-row">
+            	<div class="col-2">Mike Cappucci</div>
+                <div class="col-2"></div>
+            </div>
+            <a href="#" class="btn team-btn">Add Member</a>
+        </div>
+        
+    </div>
+</div>
+<footer>
+    <div class="container clearfix"> <a href="#" class="pull-left">Tell us what you think</a>
+        <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+    </div>
+</footer>
+
+<script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script>
+	$(document).ready(function(e) {
+        setTimeout(function(){
+			$('input[type="text"], input[type="email"], input[type="password"]').val('');
+		},1);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<div id="wrapper" ng-controller="SignupCtrl"> 
+    <!--Header-->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header class="clearfix">
+                        <div class="logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+    	<div class="signup-container">
+        	<h2>Signup</h2>
+            <ul class="steps">
+            	<li class="active"><div>1</div><span>You</span></li>
+                <li><div>2</div><span>Organisation</span></li>
+                <li><div>3</div><span>Done!</span></li>
+            </ul>
+            
+            <div ng-show="errors.length > 0" class="error-container">
+                <p ng-repeat="error in errors">
+                    {{ error }}
+                </p>
+            </div>
+        
+            <form ng-submit="create_user()">
+                <div class="group">
+                    <input name="your-name" type="text" ng-model="name">
+                    <label>Your Name</label>
+                </div>
+                <div class="group">
+                    <input name="email-txt" type="text" required ng-model="email">
+                    <label>Your Email *</label>
+                </div>
+                <div class="group">
+                    <input type="password" name="password" required ng-model="password">
+                    <label>Password *</label>
+                </div>
+                <div class="group">
+                    <input type="password" name="confirm-password" required ng-model="password_confirmation">
+                    <label>Confirm Password *</label>
+                </div>
+                <div class="group-btn" style="text-align:left;">
+                    <input type="submit" class="btn" value="Next">
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<footer>
+    <div class="container clearfix"> <a href="#" class="pull-left">Tell us what you think</a>
+        <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+    </div>
+</footer>
+
+<script src="js/custom.js"></script>
+<script>
+	$(document).ready(function(e) {
+        setTimeout(function(){
+			$('input[type="text"], input[type="email"], input[type="password"]').val('');
+		},1);
+
+    });
+</script>
+
+

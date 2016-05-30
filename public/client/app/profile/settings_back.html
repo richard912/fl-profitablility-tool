@@ -1,0 +1,73 @@
+<body class="short-header">
+<div id="wrapper"> 
+    <!--Header-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <header class="clearfix">
+                    <div class="logo pull-left"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                    <div class="menu pull-right">
+                        <ul>
+                            <li><a href="#">Insight <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="team-view.html">Team</a></li>
+                            <li class="active"><a href="settings.html">Settings</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div class="header-bottom clearfix">
+                    <div class="navigation-menu">
+                        <ul>
+                            <li>&nbsp;</li>
+                            <li>Settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        
+        <form class="form-space">
+        	<h3>Profile</h3>
+            <div class="group">
+                <input name="name" type="text" required>
+                <label>Name *</label>
+            </div>
+            <div class="group">
+                <input name="email-txt" type="text" required>
+                <label>Email *</label>
+            </div>
+            <h3>Password</h3>
+            <div class="group">
+                <input type="password" name="old-password" required>
+                <label>Old Password *</label>
+            </div>
+            <div class="group">
+                <input type="password" name="new-password" required>
+                <label>New Password *</label>
+            </div>
+            <div class="group">
+                <input type="password" name="confirm-password" required>
+                <label>Confirm Password *</label>
+            </div>
+            <div class="group-btn" style="text-align:left;">
+                <input type="submit" class="btn" value="Update Profile">
+            </div>
+        </form>
+        
+        
+    </div>
+</div>
+<footer>
+    <div class="container clearfix"> <a href="#" class="pull-left">Tell us what you think</a>
+        <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+    </div>
+</footer>
+
+<script>
+	$(document).ready(function(e) {
+        setTimeout(function(){
+			$('input[type="text"], input[type="email"], input[type="password"]').val('');
+		},1);
+    });
+</script>

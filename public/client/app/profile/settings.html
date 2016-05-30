@@ -1,0 +1,77 @@
+<div id="wrapper"> 
+    <!--Header-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <header class="clearfix">
+                    <div class="logo pull-left"><a href="#"><img src="images/logo.png" alt=""></a></div>
+                    <div class="menu pull-right">
+                        <ul>
+                            <li><a href="#">Insight <i class="fa fa-angle-down"></i></a></li>
+                            <li><a href="#/team" >Team</a></li>
+                            <li class="active"><a href="#/settings" >Settings</a></li>
+                            <li><a href="" ng-click="sign_out()">Signout</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div class="header-bottom clearfix">
+                    <div class="navigation-menu">
+                        <ul>
+                            <li>&nbsp;</li>
+                            <li>Settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+
+        
+        
+        <form class="form-space" ng-submit="update_profile()">
+            <div ng-show="errors.length > 0" class="error-container">
+                <p ng-repeat="error in errors">
+                    {{ error }}
+                </p>
+            </div>
+        	<h3>Profile</h3>
+            <div class="group">
+                <input name="name" ng-model="name" type="text" ng-class="{used: name !== ''}" required >
+                <label>Name *</label>
+            </div>
+            <div class="group">
+                <input name="email-txt" type="text" required ng-model="email" ng-class="{used: name !== ''}">
+                <label>Email *</label>
+            </div>
+            <h3>Password</h3>
+            <div class="group">
+                <input type="password" name="old-password" ng-model="old_password">
+                <label>Old Password *</label>
+            </div>
+            <div class="group">
+                <input type="password" name="new-password" ng-model="password">
+                <label>New Password *</label>
+            </div>
+            <div class="group">
+                <input type="password" name="confirm-password" ng-model="password_confirmation">
+                <label>Confirm Password *</label>
+            </div>
+            <div class="group-btn" style="text-align:left;">
+                <input type="submit" class="btn" value="Update Profile">
+            </div>
+        </form>
+        
+        
+    </div>
+</div>
+<footer>
+    <div class="container clearfix"> <a href="#" class="pull-left">Tell us what you think</a>
+        <div class="copyright pull-right">Copyright 2016. All Rights Reserved.</div>
+    </div>
+</footer>
+<script src="js/custom.js"></script>
+
+<script>
+
+</script>
